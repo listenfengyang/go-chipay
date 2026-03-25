@@ -149,3 +149,25 @@ type ChipPayCallbackRsp struct {
 	Code int    `json:"code"` // 回调响应码（200表示成功）
 	Msg  string `json:"msg"`  // 回调响应信息
 }
+
+// 入金回调返回
+type DepositCallbackResponse struct {
+	Code    int      `json:"code"`
+	Meg     string   `json:"msg"`
+	Data    BackBody `json:"data"`
+	Success bool     `json:"success"`
+}
+
+// Id            string `json:"id"`
+// OrderNo       string `json:"orderNo"`
+// NotifyUrl     string `json:"notifyUrl"`
+// NotifyReq     string `json:"notifyReq"`
+// NotifyCount   string `json:"notifyCount"`
+// NotifyStatus  string `json:"notifyStatus"`
+// ErrorResponse string `json:"errorResponse"`
+// UpdateTime    string `json:"updateTime"`
+// SignType      string `json:"signType"`
+type BackBody struct {
+	IntentOrderNo   string `json:"intentOrderNo"`   // ChipPay 意向订单号
+	CompanyOrderNum string `json:"companyOrderNum"` // 商户订单号
+}
