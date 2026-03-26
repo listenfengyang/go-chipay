@@ -36,7 +36,6 @@ func GenWithdrawRequestDemo() ChipPayWithdrawReq {
 		PayCardNo:       "622848202009358999",
 		PayCardBank:     "中国银行",
 		PayCardBranch:   "上海",
-		CoinSign:        "USDT",
 		PayCoinSign:     "cny", // 法币币别，须传小写英文(cny，vnd)
 		Total:           "300", // 用户付款的法币总金额(快捷买单只能传整数，快捷卖单不限)
 	}

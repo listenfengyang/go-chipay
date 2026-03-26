@@ -70,6 +70,10 @@ func (cli *Client) signWithdraw(req ChipPayWithdrawReq) (map[string]interface{},
 	if req.AreaCode == "" {
 		payload["areaCode"] = "86"
 	}
+	if req.CoinSign == "" {
+		payload["coinSign"] = "USDT"
+	}
+
 	// 当payCoinSign为cny时买单支持2.支付宝 , 3.银行卡方式，卖单支持 3.Bank card方式
 	// payCoinSign为vnd时买单支持 1.MOMO , 3.Bank card 方式，卖单支持 3.Bank card 方式
 	if req.OrderPayChannel == nil {
