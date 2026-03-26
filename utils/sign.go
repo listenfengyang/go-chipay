@@ -46,6 +46,7 @@ func BuildSignString(params map[string]interface{}, ignoreKeys ...string) string
 	str := sb.String()
 	str = strings.TrimRight(str, "&")
 	// str = "coinAmount=100.00000000&coinSign=5&companyOrderNum=M_1710402289968&errorOrderAmount=6.93480000&errorOrderTotal=50.00000000&intentOrderNo=4628493946291201&successAmount=6.93480000&total=50.00000000&tradeOrderTime=1710402308000&tradeStatus=1&unitPrice=7.21000000"
+	//str = "areaCode=90&asyncUrl=https://api-test.logtec.dev/fapi/payment/psp/public/chipay/deposit/back&companyId=4548687456245761&companyOrderNum=202603260623050639&name=赫敏·珍珍·格兰杰 &phone=5300231651&syncUrl=https://uc-test.logtec.dev/&totalAmount=22"
 	fmt.Printf("sign raw string: %s\n", str)
 
 	return str

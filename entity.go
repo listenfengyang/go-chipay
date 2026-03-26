@@ -83,12 +83,12 @@ type ChipPayDepositCallbackReq struct {
 	CoinAmount      string `json:"coinAmount"`      // 初始币数量
 	CoinSign        string `json:"coinSign"`        // 币种标识
 	TradeStatus     string `json:"tradeStatus"`     // 交易状态：0失败 1成功
-	// CancelReason    string `json:"cancelReason"`    // 取消原因（失败时返回）
-	TradeOrderTime string `json:"tradeOrderTime"` // 订单时间
-	UnitPrice      string `json:"unitPrice"`      // 单价
-	Total          string `json:"total"`          // 法币实际到账金额
-	SuccessAmount  string `json:"successAmount"`  // 币种到账数量
-	Sign           string `json:"sign"`           // 回调签名
+	CancelReason    string `json:"cancelReason"`    // 取消原因（失败时返回）
+	TradeOrderTime  string `json:"tradeOrderTime"`  // 订单时间
+	UnitPrice       string `json:"unitPrice"`       // 单价
+	Total           string `json:"total"`           // 法币实际到账金额
+	SuccessAmount   string `json:"successAmount"`   // 币种到账数量
+	Sign            string `json:"sign"`            // 回调签名
 }
 
 type ChipPayWithdrawReq struct {
