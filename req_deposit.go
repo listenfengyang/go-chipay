@@ -14,7 +14,7 @@ func (cli *Client) Deposit(req ChipPayDepositReq) (*ChipPayDepositRsp, error) {
 	req.AsyncURL = cli.Params.AsyncURL   // 异步通知地址
 	req.CompanyID = cli.Params.CompanyID // 商户ID
 	req.SyncURL = cli.Params.SyncURL     // 同步返回地址
-	req.AreaCode = "90"                  //"86"                  // 区号 默认86
+	// req.AreaCode = "90"                  //"86"                  // 区号 默认86
 
 	payload, rawSign, err := cli.signStruct(req)
 	if err != nil {

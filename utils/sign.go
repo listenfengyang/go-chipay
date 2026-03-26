@@ -35,9 +35,12 @@ func BuildSignString(params map[string]interface{}, ignoreKeys ...string) string
 
 	var sb strings.Builder
 	for _, key := range keys {
-		// if toSignValue(params[key]) == "" {
-		// 	continue
-		// }
+		// 失败或异常情况 cancelReason才参与签名
+		if tradeStatus, ok := params["tradeStatus"]; ok {
+			if tradeStatus == "1" && key == "cancelReason" {
+				continue
+			}
+		}
 		sb.WriteString(key)
 		sb.WriteString("=")
 		sb.WriteString(toSignValue(params[key]))
