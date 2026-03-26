@@ -12,7 +12,7 @@ func TestWithdraw(t *testing.T) {
 			PrivateKey:        PRIVATE_KEY,
 			CallbackPublicKey: CALLBACK_PUBLIC_KEY,
 			SyncURL:           SYNC_URL,
-			AsyncURL:          ASYNC_URL,
+			WithdrawAsyncUrl:  WITHDRAW_ASYNC_URL,
 		},
 		DepositURL:       DEPOSIT_URL,
 		WithdrawURL:      WITHDRAW_URL,
@@ -30,14 +30,14 @@ func TestWithdraw(t *testing.T) {
 
 func GenWithdrawRequestDemo() ChipPayWithdrawReq {
 	return ChipPayWithdrawReq{
-		CompanyOrderNum: "37028219790919996X",
+		CompanyOrderNum: "2029884682646034",
 		Username:        "赫敏·珍珍·格兰杰",
 		Phone:           "5300231651",
 		PayCardNo:       "622848202009358999",
 		PayCardBank:     "中国银行",
 		PayCardBranch:   "上海",
 		CoinSign:        "USDT",
-		PayCoinSign:     "cny",
-		Total:           "300",
+		PayCoinSign:     "cny", // 法币币别，须传小写英文(cny，vnd)
+		Total:           "300", // 用户付款的法币总金额(快捷买单只能传整数，快捷卖单不限)
 	}
 }

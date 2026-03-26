@@ -70,14 +70,16 @@ func (cli *Client) signWithdraw(req ChipPayWithdrawReq) (map[string]interface{},
 	if req.AreaCode == "" {
 		payload["areaCode"] = "86"
 	}
+	// 当payCoinSign为cny时买单支持2.支付宝 , 3.银行卡方式，卖单支持 3.Bank card方式
+	// payCoinSign为vnd时买单支持 1.MOMO , 3.Bank card 方式，卖单支持 3.Bank card 方式
 	if req.OrderPayChannel == nil {
 		payload["orderPayChannel"] = 3
 	}
 	if req.OrderTime == "" {
 		payload["orderTime"] = strconv.FormatInt(time.Now().UnixMilli(), 10)
 	}
-	if req.AsyncURL == "" && cli.Params.AsyncURL != "" {
-		payload["asyncUrl"] = cli.Params.AsyncURL
+	if req.AsyncURL == "" && cli.Params.WithdrawAsyncUrl != "" {
+		payload["asyncUrl"] = cli.Params.WithdrawAsyncUrl
 	}
 	if req.SyncURL == "" && cli.Params.SyncURL != "" {
 		payload["syncUrl"] = cli.Params.SyncURL

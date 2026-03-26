@@ -12,7 +12,7 @@ func TestDeposit(t *testing.T) {
 			PrivateKey:        PRIVATE_KEY,
 			CallbackPublicKey: CALLBACK_PUBLIC_KEY,
 			SyncURL:           SYNC_URL,
-			AsyncURL:          ASYNC_URL,
+			DepositAsyncUrl:   DEPOSIT_ASYNC_URL,
 		},
 		DepositURL:       DEPOSIT_URL,
 		WithdrawURL:      WITHDRAW_URL,
