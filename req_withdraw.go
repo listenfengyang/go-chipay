@@ -71,7 +71,7 @@ func (cli *Client) signWithdraw(req ChipPayWithdrawReq) (map[string]interface{},
 		payload["areaCode"] = "86"
 	}
 	if req.CoinSign == "" {
-		payload["coinSign"] = "USDT"
+		payload["coinSign"] = "5" //数字货币标识：5.usdt
 	}
 
 	// 当payCoinSign为cny时买单支持2.支付宝 , 3.银行卡方式，卖单支持 3.Bank card方式
