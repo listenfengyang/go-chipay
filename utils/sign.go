@@ -36,11 +36,7 @@ func BuildSignString(params map[string]interface{}, ignoreKeys ...string) string
 	var sb strings.Builder
 	for _, key := range keys {
 		// 失败或异常情况 部分参数不参与签名
-		if tradeStatus, ok := params["tradeStatus"]; ok && tradeStatus != "1" {
-			if key == "coinAmount" || key == "total" || key == "unitPrice" {
-				continue
-			}
-		} else if tradeStatus, ok := params["tradeStatus"]; ok && tradeStatus == "1" {
+		if tradeStatus, ok := params["tradeStatus"]; ok && tradeStatus == "1" {
 			if key == "cancelReason" {
 				continue
 			}
