@@ -27,18 +27,33 @@ func TestCallback(t *testing.T) {
 
 func GenCallbackRequestDemo() ChipPayDepositCallbackReq {
 	// 成功
+	//{"sign":"EiKv9Zw1KwVaNcRtVqvmaBVbnDfR4HWpdlBySC2DLnb7qFQQOq2SbELbmGORaQqaOxR3ANZbMHukpWEFhSP9QNkmJ2OxJMnBCAFcQrRQ8m7FYqNNVi+5omG4NuRwgDCn+wgw4bwAeEu9UZB0I4CQD1PJxMzU0KuCmNZFZJ2ftfc=",
+	// "intentOrderNo":"4694127072989185","total":"38.00000000",
+	// "unitPrice":"7.00000000","coinSign":"5","tradeOrderTime":"2026-03-26 11:53:25",
+	// "successAmount":"5.42850000","coinAmount":"5.42850000","companyOrderNum":"202603260652380412","tradeStatus":"1"}
 	req := ChipPayDepositCallbackReq{
-		Sign:            "IdnEQIOBP10NmCoKpdEAgJZ2Gl6rgbBdScFuC27dthXVSeIyl5qbdGwESzN1tfkNx9OombzpiuyFIx9xOke/oGKLTQfBHwZl5EzSUU9t4UK/pFqwfA6/ls0tTi5reBx8cxuzgjDzwvT61qhjnxEcKPOrHBL+K5JO+iUjWPE17xo=",
-		IntentOrderNo:   "4694051025586177",
-		Total:           "300.00000000",
+		Sign:            "EiKv9Zw1KwVaNcRtVqvmaBVbnDfR4HWpdlBySC2DLnb7qFQQOq2SbELbmGORaQqaOxR3ANZbMHukpWEFhSP9QNkmJ2OxJMnBCAFcQrRQ8m7FYqNNVi+5omG4NuRwgDCn+wgw4bwAeEu9UZB0I4CQD1PJxMzU0KuCmNZFZJ2ftfc=",
+		IntentOrderNo:   "4694127072989185",
+		Total:           "38.00000000",
 		UnitPrice:       "7.00000000",
 		CoinSign:        "5",
-		TradeOrderTime:  "2026-03-25 15:17:36",
-		SuccessAmount:   "42.85710000",
-		CoinAmount:      "42.85710000",
-		CompanyOrderNum: "37028219790919996X",
+		TradeOrderTime:  "2026-03-26 11:53:25",
+		SuccessAmount:   "5.42850000",
+		CoinAmount:      "5.42850000",
+		CompanyOrderNum: "202603260652380412",
 		TradeStatus:     "1",
 	}
+
+	// req := ChipPayDepositCallbackReq{
+	// 	Sign:            "Ua1GrsiSNTZ9kZpRCsxrVyS1QSFVCKtSau232dfdtDHyCmFJ/Bf/UHiVAI6k2WOVeN3S/oe5F8RRMYkZD2GXP51T78QaCAor8wRl6+8ovF1gntfecLp2E/96ugpg2Ch+vSbnLdoSnRURVFR94NZV61GObv+KrtYVK/y/3czRH2w=",
+	// 	IntentOrderNo:   "4694126688955393",
+	// 	CancelReason:    "系統取消 System cancelled",
+	// 	CoinSign:        "5",
+	// 	TradeOrderTime:  "2026-03-26 11:46:23",
+	// 	SuccessAmount:   "0",
+	// 	CompanyOrderNum: "202603260646230417",
+	// 	TradeStatus:     "0",
+	// }
 
 	return req
 
