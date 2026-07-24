@@ -35,10 +35,11 @@ func TestDeposit(t *testing.T) {
 func GenDepositRequestDemo() ChipPayDepositReq {
 	amount := int64(300)
 	return ChipPayDepositReq{
-		CompanyOrderNum: "202666335563990",
-		Phone:           "5300231651",
+		CompanyOrderNum: "2026663355639903",
+		Phone:           "5308231651",
 		TotalAmount:     &amount,
-		Name:            "赫敏·珍珍·格兰杰",
+		Name:            "張三",
 		Number:          "37028219790919996X",
+		Area:            "CHN",
 	}
 }

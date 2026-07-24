@@ -7,6 +7,7 @@ type ChipPayInitParams struct {
 	WithdrawURL      string `json:"withdrawURL" mapstructure:"withdrawURL" config:"withdrawURL" yaml:"withdrawURL"`                     // 出金下单接口地址
 	QueryDepositURL  string `json:"queryDepositURL" mapstructure:"queryDepositURL" config:"queryDepositURL" yaml:"queryDepositURL"`     // 入金订单查询接口地址
 	QueryWithdrawURL string `json:"queryWithdrawURL" mapstructure:"queryWithdrawURL" config:"queryWithdrawURL" yaml:"queryWithdrawURL"` // 出金订单查询接口地址
+	USDTDepositURL   string `json:"usdtDepositURL" mapstructure:"usdtDepositURL" config:"usdtDepositURL" yaml:"usdtDepositURL"`         // USDT轮换地址模式入金下单接口地址
 }
 
 type MerchantInfo struct {
@@ -171,4 +172,61 @@ type DepositCallbackResponse struct {
 type BackBody struct {
 	IntentOrderNo   string `json:"intentOrderNo"`   // ChipPay 意向订单号
 	CompanyOrderNum string `json:"companyOrderNum"` // 商户订单号
+}
+
+// ========== USDT 轮换地址模式（1.1.3）==========
+
+// ChipPayUSDTDepositReq USDT 轮换地址模式下单请求
+type ChipPayUSDTDepositReq struct {
+	CompanyID      int64    `json:"companyId"`                // 商户ID
+	CompanyOrderNo string   `json:"companyOrderNo"`           // 商户订单号（字母和数字组合，唯一不重复，最长20位）
+	RechargeCoin   string   `json:"rechargeCoin"`             // 订单币种（参照可用币种列表，USDT=5）
+	RechargeAmount *float64 `json:"rechargeAmount,omitempty"` // 存币数量（double，选填）
+	AsyncURL       string   `json:"asyncUrl"`                 // 异步通知地址（商户接收回调通知的地址）
+	SyncURL        string   `json:"syncUrl,omitempty"`        // 同步返回地址（选填）
+	CoinType       string   `json:"-"`                        // 指定收银台显示的链类型（选填，不参与签名），如 "erc20"、"trc20"、"bep20"、"spl" 等；留空则显示所有支持的链
+	Sign           string   `json:"sign,omitempty"`           // 请求签名（SDK自动计算）
+}
+
+// ChipPayUSDTDepositRsp USDT 轮换地址模式下单响应
+type ChipPayUSDTDepositRsp struct {
+	Code    int                    `json:"code"`    // 状态码
+	Msg     string                 `json:"msg"`     // 提示信息
+	Data    ChipPayUSDTDepositData `json:"data"`    // 业务数据
+	Success bool                   `json:"success"` // 是否成功
+}
+
+// ChipPayUSDTDepositData USDT 轮换地址模式下单响应数据
+type ChipPayUSDTDepositData struct {
+	CompanyOrderNo    string                       `json:"companyOrderNo"`    // 商户订单号
+	Link              string                       `json:"link"`              // 收银台链接
+	OrderAddressesDTO ChipPayUSDTOrderAddressesDTO `json:"orderAddressesDTO"` // 链上收款地址信息
+}
+
+// ChipPayUSDTOrderAddressesDTO 链上收款地址集合
+type ChipPayUSDTOrderAddressesDTO struct {
+	Addresses []ChipPayUSDTAddress `json:"addresses"` // 各链地址列表（推荐使用）
+}
+
+// ChipPayUSDTAddress 单条链上地址信息
+type ChipPayUSDTAddress struct {
+	Mainnet  string `json:"mainnet"`  // 主网名称（如 ETH、TRON、SOL、BNB）
+	Protocol string `json:"protocol"` // 协议（如 ERC20、TRC20、SPL、BEP20）
+	CoinName string `json:"coinName"` // 币种名称（如 USDT）
+	CoinType int    `json:"coinType"` // 0:主币 1:代币
+	Address  string `json:"address"`  // 收款地址
+}
+
+// ChipPayUSDTDepositCallbackReq USDT 轮换地址模式回调通知参数
+type ChipPayUSDTDepositCallbackReq struct {
+	CompanyOrderNo          string `json:"companyOrderNo"`          // 商户订单号
+	AccumulativeTotalAmount string `json:"accumulativeTotalAmount"` // 当下收到币种的累积存币数量
+	RechargeActualCoin      string `json:"rechargeActualCoin"`      // 实际存币币种（参照可用币种列表）
+	RechargeActualAmount    string `json:"rechargeActualAmount"`    // 实际存币数量
+	RechargeAccountTime     string `json:"rechargeAccountTime"`     // 存币到账时间
+	RechargeDetailOrderNo   string `json:"rechargeDetailOrderNo"`   // 存币订单号
+	RechargeAddress         string `json:"rechargeAddress"`         // 存币地址
+	TxHash                  string `json:"txHash"`                  // 交易哈希
+	FromAddress             string `json:"fromAddress"`             // 存币发送地址
+	Sign                    string `json:"sign"`                    // 签名
 }
