@@ -27,7 +27,7 @@ func (cli *Client) USDTDeposit(req ChipPayUSDTDepositReq) (*ChipPayUSDTDepositRs
 
 	// 自动填充商户公共字段
 	req.CompanyID = cli.Params.CompanyID
-	req.AsyncURL = cli.Params.DepositAsyncUrl
+	req.AsyncURL = cli.Params.USDTDepositAsyncUrl
 	if req.SyncURL == "" {
 		req.SyncURL = cli.Params.SyncURL
 	}

@@ -8,11 +8,12 @@ func newUSDTDepositClient() *Client {
 	vLog := VLog{}
 	return NewClient(vLog, &ChipPayInitParams{
 		MerchantInfo: MerchantInfo{
-			CompanyID:         COMPANY_ID,
-			PrivateKey:        PRIVATE_KEY,
-			CallbackPublicKey: CALLBACK_PUBLIC_KEY,
-			DepositAsyncUrl:   DEPOSIT_ASYNC_URL,
-			SyncURL:           SYNC_URL,
+			CompanyID:           COMPANY_ID,
+			PrivateKey:          PRIVATE_KEY,
+			CallbackPublicKey:   CALLBACK_PUBLIC_KEY,
+			DepositAsyncUrl:     DEPOSIT_ASYNC_URL,
+			USDTDepositAsyncUrl: USDT_DEPOSIT_ASYNC_URL, // USDT入金专用回调地址
+			SyncURL:             SYNC_URL,
 		},
 		DepositURL:       DEPOSIT_URL,
 		WithdrawURL:      WITHDRAW_URL,

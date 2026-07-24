@@ -11,12 +11,13 @@ type ChipPayInitParams struct {
 }
 
 type MerchantInfo struct {
-	CompanyID         int64  `json:"companyId" mapstructure:"companyId" config:"companyId" yaml:"companyId"`                                 // 商户ID
-	PrivateKey        string `json:"privateKey" mapstructure:"privateKey" config:"privateKey" yaml:"privateKey"`                             // 商户私钥（Base64 DER PKCS#8 或 PEM）
-	CallbackPublicKey string `json:"callbackPublicKey" mapstructure:"callbackPublicKey" config:"callbackPublicKey" yaml:"callbackPublicKey"` // ChipPay 回调公钥
-	DepositAsyncUrl   string `json:"depositAsyncUrl" mapstructure:"depositAsyncUrl" config:"depositAsyncUrl" yaml:"depositAsyncUrl"`         // 入金异步通知地址 (商户接收回调通知的地址)
-	WithdrawAsyncUrl  string `json:"withdrawAsyncUrl" mapstructure:"withdrawAsyncUrl" config:"withdrawAsyncUrl" yaml:"withdrawAsyncUrl"`     // 出金异步通知地址 (商户接收回调通知的地址)
-	SyncURL           string `json:"syncUrl" mapstructure:"syncUrl" config:"syncUrl" yaml:"syncUrl"`                                         // 同步返回地址 (用户完成或取消交易后返回至商户平台的地址)
+	CompanyID           int64  `json:"companyId" mapstructure:"companyId" config:"companyId" yaml:"companyId"`                                         // 商户ID
+	PrivateKey          string `json:"privateKey" mapstructure:"privateKey" config:"privateKey" yaml:"privateKey"`                                     // 商户私钥（Base64 DER PKCS#8 或 PEM）
+	CallbackPublicKey   string `json:"callbackPublicKey" mapstructure:"callbackPublicKey" config:"callbackPublicKey" yaml:"callbackPublicKey"`         // ChipPay 回调公钥
+	DepositAsyncUrl     string `json:"depositAsyncUrl" mapstructure:"depositAsyncUrl" config:"depositAsyncUrl" yaml:"depositAsyncUrl"`                 // 入金异步通知地址 (商户接收回调通知的地址)
+	USDTDepositAsyncUrl string `json:"usdtDepositAsyncUrl" mapstructure:"usdtDepositAsyncUrl" config:"usdtDepositAsyncUrl" yaml:"usdtDepositAsyncUrl"` // USDT入金异步通知地址 (优先于 DepositAsyncUrl，未配置时回退到 DepositAsyncUrl)
+	WithdrawAsyncUrl    string `json:"withdrawAsyncUrl" mapstructure:"withdrawAsyncUrl" config:"withdrawAsyncUrl" yaml:"withdrawAsyncUrl"`             // 出金异步通知地址 (商户接收回调通知的地址)
+	SyncURL             string `json:"syncUrl" mapstructure:"syncUrl" config:"syncUrl" yaml:"syncUrl"`                                                 // 同步返回地址 (用户完成或取消交易后返回至商户平台的地址)
 }
 
 type ChipPayDepositReq struct {
